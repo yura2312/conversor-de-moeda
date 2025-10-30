@@ -3,7 +3,7 @@ package model;
 public class CurrencyExchange {
     private final CurrencyEnum fromCurrencyEnum;
     private final CurrencyEnum toCurrencyEnum;
-    private double conversionRate;
+    private double conversionRate = 0;
 
     public CurrencyEnum getFromCurrency() {
         return fromCurrencyEnum;

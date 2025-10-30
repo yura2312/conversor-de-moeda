@@ -5,20 +5,17 @@ import service.JsonService;
 import service.HttpService;
 
 public class Controller {
-    HttpService htppService;
-    CurrencyExchange currencyExchange;
-    JsonService jsonService;
+    private final HttpService htppService;
+    private final JsonService jsonService;
 
-    public Controller(HttpService httpService, CurrencyExchange currencyExchange, JsonService jsonService) {
+    public Controller(HttpService httpService, JsonService jsonService) {
         this.htppService = httpService;
-        this.currencyExchange = currencyExchange;
         this.jsonService = jsonService;
     }
 
-    public void conversion(){
-        String json = htppService.getJson();
+    public void conversion(CurrencyExchange currencyExchange){
+        String json = htppService.getJson(currencyExchange);
         jsonService.setConversionRateFromAPI(currencyExchange, json);
-        System.out.println(currencyExchange);
     }
 
 }

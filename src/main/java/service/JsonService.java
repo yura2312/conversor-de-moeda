@@ -9,11 +9,10 @@ public class JsonService {
 
     CurrencyExchange currencyExchange;
 
-    public JsonService(CurrencyExchange currencyExchange) {
-        this.currencyExchange = currencyExchange;
+    public JsonService() {
     }
 
-    public void setConversionRateFromAPI(CurrencyExchange currencyExchange, String json){
+    public void setConversionRateFromAPI(CurrencyExchange currencyExchange, String json) {
         JsonElement element = JsonParser.parseString(json);
         JsonObject object = element.getAsJsonObject();
         double conversionRate = object.get("conversion_rate").getAsDouble();

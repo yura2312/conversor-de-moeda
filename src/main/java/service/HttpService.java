@@ -10,14 +10,12 @@ import java.net.http.HttpResponse;
 
 public class HttpService {
 
-    CurrencyExchange exchange;
 
-    public HttpService(CurrencyExchange exchange) {
-        this.exchange = exchange;
+    public HttpService() {
     }
 
 
-    private URI setAPIRoute() {
+    private URI setAPIRoute(CurrencyExchange exchange) {
         StringBuilder stringBuilder = new StringBuilder();
         String API_KEY = System.getenv("API_KEY");
         stringBuilder.append("https://v6.exchangerate-api.com/v6/")
@@ -27,10 +25,10 @@ public class HttpService {
         return URI.create(String.valueOf(stringBuilder));
     }
 
-    public String getJson() {
+    public String getJson(CurrencyExchange exchange) {
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
-                .uri(setAPIRoute())
+                .uri(setAPIRoute(exchange))
                 .build();
 
 
