@@ -1,6 +1,6 @@
 package model;
 
-public enum Currency {
+public enum CurrencyEnum {
     USD("Dólar"),
     BRL("Real brasileiro"),
     ARS("Peso Argentino"),
@@ -11,7 +11,7 @@ public enum Currency {
 
     public final String nome;
 
-    Currency(String nome) {
+    CurrencyEnum(String nome) {
         this.nome = nome;
     }
 }

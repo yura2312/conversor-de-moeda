@@ -1,7 +1,7 @@
 package controller;
 
 import model.CurrencyExchange;
-import parser.JsonService;
+import service.JsonService;
 import service.HttpService;
 
 public class Controller {

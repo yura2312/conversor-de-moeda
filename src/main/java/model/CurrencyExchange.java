@@ -1,21 +1,21 @@
 package model;
 
 public class CurrencyExchange {
-    private final Currency fromCurrency;
-    private final Currency toCurrency;
+    private final CurrencyEnum fromCurrencyEnum;
+    private final CurrencyEnum toCurrencyEnum;
     private double conversionRate;
 
-    public Currency getFromCurrency() {
-        return fromCurrency;
+    public CurrencyEnum getFromCurrency() {
+        return fromCurrencyEnum;
     }
 
-    public Currency getToCurrency() {
-        return toCurrency;
+    public CurrencyEnum getToCurrency() {
+        return toCurrencyEnum;
     }
 
-    public CurrencyExchange(Currency fromCurrency, Currency toCurrency) {
-        this.fromCurrency = fromCurrency;
-        this.toCurrency = toCurrency;
+    public CurrencyExchange(CurrencyEnum fromCurrencyEnum, CurrencyEnum toCurrencyEnum) {
+        this.fromCurrencyEnum = fromCurrencyEnum;
+        this.toCurrencyEnum = toCurrencyEnum;
     }
 
     public void setConversionRate(double conversionRate) {
@@ -28,6 +28,6 @@ public class CurrencyExchange {
 
     @Override
     public String toString() {
-        return "1 " + fromCurrency.nome + " = " + conversionRate + " " +toCurrency.nome;
+        return "1 " + fromCurrencyEnum.nome + " = " + conversionRate + " " + toCurrencyEnum.nome;
     }
 }

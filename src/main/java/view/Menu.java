@@ -1,16 +1,20 @@
 package view;
 
+import controller.Controller;
 import model.CurrencyExchange;
-import parser.JsonService;
+import service.JsonService;
 import service.HttpService;
-import model.Currency;
+import model.CurrencyEnum;
+
 import java.util.Scanner;
 
 public class Menu {
 
 
-    JsonService jsonService = new JsonService();
+    JsonService jsonService;
     HttpService httpService;
+    Controller controller;
+
     public void showMenu() {
         String OPTIONS = """
                 ********************************
@@ -31,16 +35,18 @@ public class Menu {
 
             switch (menuIndex) {
                 case 1: {
-                    CurrencyExchange exchange = new CurrencyExchange(Currency.USD, Currency.BRL);
+                    CurrencyEnum fromCurrency = CurrencyEnum.USD;
+                    CurrencyEnum toCurrency = CurrencyEnum.BRL;
+                    CurrencyExchange exchange = new CurrencyExchange(fromCurrency, toCurrency);
+                    jsonService = new JsonService(exchange);
                     httpService = new HttpService(exchange);
-                    String json = httpService.getJson();
-                    jsonService.setConversionRateFromAPI(exchange, json);
-                    System.out.println(exchange);
+                    controller = new Controller(httpService, exchange, jsonService);
+                    controller.conversion();
                 }
-                default: return;
+                default:
+                    return;
             }
         }
-
     }
 
 }
