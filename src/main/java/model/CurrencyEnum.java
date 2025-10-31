@@ -9,9 +9,18 @@ public enum CurrencyEnum {
     COP("Peso colombiano");
 
 
-    public final String nome;
+    public final String currencyName;
 
-    CurrencyEnum(String nome) {
-        this.nome = nome;
+    CurrencyEnum(String currencyName) {
+        this.currencyName = currencyName;
+    }
+
+    public static CurrencyEnum validateEnum(String currency) {
+        for (CurrencyEnum currencyEnum : CurrencyEnum.values()) {
+            if (currencyEnum.name().equals(currency)) {
+                return CurrencyEnum.valueOf(currency);
+            }
+        }
+        return null;
     }
 }

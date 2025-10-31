@@ -25,9 +25,4 @@ public class CurrencyExchange {
     public double getConversionRate() {
         return conversionRate;
     }
-
-    @Override
-    public String toString() {
-        return "1 " + fromCurrencyEnum.nome + " = " + conversionRate + " " + toCurrencyEnum.nome;
-    }
 }
