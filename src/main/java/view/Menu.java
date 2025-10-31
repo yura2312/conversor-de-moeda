@@ -24,7 +24,7 @@ public class Menu {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
     String OPTIONS = """
-            ********************************
+            *********************************
             1) Dólar -> Real brasileiro
             2) Dolár -> Peso argentino
             3) Dólar -> Peso colombiano
@@ -34,8 +34,7 @@ public class Menu {
             7) Conversão personalizada
             8) Histórico de conversões
             0) SAIR
-            ********************************
-            """;
+            ********************************""";
 
 
     public void showMenu() {
@@ -77,20 +76,20 @@ public class Menu {
                     break;
                 }
                 case 7: {
-                    System.out.println("Qual a moeda de origem?");
+                    System.out.println("Qual o código da moeda de origem?");
                     String fromCurrency = scanner.nextLine().toUpperCase();
 
                     try {
                         System.out.println("Quantia: ");
                         fromAmount = scanner.nextDouble();
                         scanner.nextLine();
-                    } catch (InputMismatchException e){
+                    } catch (InputMismatchException e) {
                         System.out.println("ERRO: Erro de input, digite um número válido");
                         scanner.nextLine();
                         break;
                     }
 
-                    System.out.println("Qual a moeda de destino?");
+                    System.out.println("Qual o código da moeda de destino?");
                     String toCurrency = scanner.nextLine().toUpperCase();
 
 
