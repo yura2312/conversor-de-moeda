@@ -8,7 +8,7 @@ public record ExchangeResponse(
 ) {
     @Override
     public String toString() {
-        return "%f %s = %f %s".formatted(
+        return "%.2f %s = %.2f %s".formatted(
                 fromCurrencyAmount, currencyExchange.getFromCurrency().currencyName,
                 fromCurrencyAmount * currencyExchange.getConversionRate(), currencyExchange.getToCurrency().currencyName);
     }
