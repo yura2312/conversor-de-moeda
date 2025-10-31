@@ -3,11 +3,10 @@ package service;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import model.CurrencyEnum;
 import model.CurrencyExchange;
 
 public class JsonService {
-
-    CurrencyExchange currencyExchange;
 
     public JsonService() {
     }
@@ -18,4 +17,5 @@ public class JsonService {
         double conversionRate = object.get("conversion_rate").getAsDouble();
         currencyExchange.setConversionRate(conversionRate);
     }
+
 }
