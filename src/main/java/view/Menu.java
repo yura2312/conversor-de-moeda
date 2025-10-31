@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private final JsonService jsonService;
-    private final HttpService httpService;
-    private final Controller controller;
+    private final JsonService jsonService = new JsonService();
+    private final HttpService httpService = new HttpService();
+    private final Controller controller = new Controller(httpService, jsonService);
     Scanner scanner = new Scanner(System.in);
 
     String OPTIONS = """
@@ -27,21 +27,19 @@ public class Menu {
             ********************************
             """;
 
-    public Menu() {
-        this.jsonService = new JsonService();
-        this.httpService = new HttpService();
-        this.controller = new Controller(this.httpService, this.jsonService);
-    }
-
 
     public void showMenu() {
-        int menuIndex = -1;
-        while (menuIndex != 0) {
+        int menuIndex;
+        while (true) {
             CurrencyExchange exchange = null;
             System.out.println(OPTIONS);
             menuIndex = scanner.nextInt();
             scanner.nextLine();
             switch (menuIndex) {
+                case 0: {
+                    System.out.println("Fechando...");
+                    return;
+                }
                 case 1: {
                     exchange = new CurrencyExchange(CurrencyEnum.USD, CurrencyEnum.BRL);
                     break;
@@ -66,20 +64,16 @@ public class Menu {
                     exchange = new CurrencyExchange(CurrencyEnum.BRL, CurrencyEnum.COP);
                     break;
                 }
-                case 0: {
-                    System.out.println("Fechando...");
-                    return;
-                }
                 default:
                     System.out.println("Digite uma opção válida: ");
             }
 
-            if (exchange!=null){
-                controller.conversion(exchange);
+            if (exchange != null) {
+                controller.defaultConversion(exchange);
                 System.out.println(exchange);
             }
 
-            System.out.println("Aperte qualquer tecla para continuar...");
+            System.out.println("Aperte enter para continuar...");
             scanner.nextLine();
             System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
         }

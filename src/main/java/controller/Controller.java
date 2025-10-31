@@ -13,9 +13,12 @@ public class Controller {
         this.jsonService = jsonService;
     }
 
-    public void conversion(CurrencyExchange currencyExchange){
+    public void defaultConversion(CurrencyExchange currencyExchange){
         String json = htppService.getJson(currencyExchange);
         jsonService.setConversionRateFromAPI(currencyExchange, json);
     }
 
+    public void customConversion(CurrencyExchange currencyExchange){
+
+    }
 }
